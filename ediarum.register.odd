@@ -36,12 +36,14 @@
         <moduleRef key="linking" include=""/>
 
         <moduleRef key="namesdates"
-          include="birth death floruit forename gender listOrg listPerson listPlace location org orgName persName person personGrp place placeName sex surname"/>
+          include="birth death floruit forename gender listOrg listPerson listPlace location org orgName persName person personGrp place placeName sex settlement surname"/>
+        
         <classSpec ident="att.canonical" type="atts" mode="change">
           <attList>
             <attDef ident="key" mode="delete"/>
           </attList>
         </classSpec>
+        
         <classSpec ident="att.global" type="atts" mode="change">
           <attList>
             <attDef ident="n" mode="delete"/>
@@ -49,6 +51,7 @@
             <attDef ident="xml:space" mode="delete"/>
           </attList>
         </classSpec>
+        
         <classSpec ident="att.global.linking" type="atts" mode="change">
           <attList>
             <attDef ident="synch" mode="delete"/>
@@ -61,11 +64,13 @@
             <attDef ident="select" mode="delete"/>
           </attList>
         </classSpec>
+        
         <classSpec ident="att.global.responsibility" type="atts" mode="change">
           <attList>
             <attDef ident="cert" mode="delete"/>
           </attList>
         </classSpec>
+        
         <classSpec ident="att.declarable" type="atts" mode="delete"/>
         <classSpec ident="att.declaring" type="atts" mode="delete"/>
         <classSpec ident="att.fragmentable" type="atts" mode="delete"/>
