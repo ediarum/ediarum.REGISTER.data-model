@@ -22,19 +22,18 @@
     <body>
       <schemaSpec ident="ediarum.register" start="TEI" prefix="tei_" targetLang="en" docLang="en">
 
-        <!-- required minimal header elements -->
         <moduleRef key="header"
           include="teiHeader fileDesc titleStmt publicationStmt sourceDesc availability editionStmt idno keywords licence textClass profileDesc"/>
 
-        <!-- required core elements (p and title for use in titleStmt) -->
         <moduleRef key="core"
           include="p title bibl desc editor email item label listBibl list name note publisher pubPlace ref term author date respStmt resp"/>
 
-        <!-- required textstructure elements (TEI, text, and body) -->
         <moduleRef key="textstructure" include="TEI text body"/>
 
-        <!-- required module tei instantiates lots of classes used for further expansion of this odd -->
         <moduleRef key="tei"/>
+        
+        <!-- module linking important for att.global.linking --> 
+        <moduleRef key="linking" include=""/>
 
         <moduleRef key="namesdates"
           include="birth death floruit forename gender listOrg listPerson listPlace location org orgName persName person personGrp place placeName sex surname"/>
@@ -54,6 +53,7 @@
           <attList>
             <attDef ident="synch" mode="delete"/>
             <attDef ident="sameAs" mode="delete"/>
+            <attDef ident="copyOf" mode="delete"/>
             <attDef ident="copyOf" mode="delete"/>
             <attDef ident="next" mode="delete"/>
             <attDef ident="prev" mode="delete"/>
