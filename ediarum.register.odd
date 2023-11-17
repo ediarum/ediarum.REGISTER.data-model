@@ -26,7 +26,7 @@
           include="teiHeader fileDesc titleStmt publicationStmt sourceDesc availability editionStmt idno keywords licence textClass profileDesc"/>
 
         <moduleRef key="core"
-          include="p title bibl desc editor email item label listBibl list name note publisher pubPlace ref term author date respStmt resp"/>
+          include="address author bibl date desc editor email item label listBibl list name note p publisher pubPlace ref respStmt resp term title"/>
 
         <moduleRef key="textstructure" include="TEI text body"/>
 
