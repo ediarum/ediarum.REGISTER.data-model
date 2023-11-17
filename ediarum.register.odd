@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>ediarum.REGISTER.data-model</title>
+        <author>Stefan Dumont</author>
+      </titleStmt>
+      <publicationStmt>
+        <publisher>Berlin-Brandenburg Academy of Sciences and Humanities</publisher>
+        <availability>
+          <licence target="http://creativecommons.org/licenses/by/4.0/"> Distributed under a
+            Creative Commons Attribution 4.0</licence>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Born digital.</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <schemaSpec ident="ediarum.register" start="TEI" prefix="tei_" targetLang="en" docLang="en">
+
+        <!-- required minimal header elements -->
+        <moduleRef key="header"
+          include="teiHeader fileDesc titleStmt publicationStmt sourceDesc availability editionStmt idno keywords licence textClass profileDesc"/>
+
+        <!-- required core elements (p and title for use in titleStmt) -->
+        <moduleRef key="core"
+          include="p title bibl desc editor email item label listBibl list name note publisher pubPlace ref term author date respStmt resp"/>
+
+        <!-- required textstructure elements (TEI, text, and body) -->
+        <moduleRef key="textstructure" include="TEI text body"/>
+
+        <!-- required module tei instantiates lots of classes used for further expansion of this odd -->
+        <moduleRef key="tei"/>
+
+        <moduleRef key="namesdates"
+          include="birth death floruit forename gender listOrg listPerson listPlace location org orgName persName person personGrp place placeName sex surname"/>
+        <classSpec ident="att.canonical" type="atts" mode="change">
+          <attList>
+            <attDef ident="key" mode="delete"/>
+          </attList>
+        </classSpec>
+        <classSpec ident="att.global" type="atts" mode="change">
+          <attList>
+            <attDef ident="n" mode="delete"/>
+            <attDef ident="xml:base" mode="delete"/>
+            <attDef ident="xml:space" mode="delete"/>
+          </attList>
+        </classSpec>
+        <classSpec ident="att.global.linking" type="atts" mode="change">
+          <attList>
+            <attDef ident="synch" mode="delete"/>
+            <attDef ident="sameAs" mode="delete"/>
+            <attDef ident="copyOf" mode="delete"/>
+            <attDef ident="next" mode="delete"/>
+            <attDef ident="prev" mode="delete"/>
+            <attDef ident="exclude" mode="delete"/>
+            <attDef ident="select" mode="delete"/>
+          </attList>
+        </classSpec>
+        <classSpec ident="att.global.responsibility" type="atts" mode="change">
+          <attList>
+            <attDef ident="cert" mode="delete"/>
+          </attList>
+        </classSpec>
+        <classSpec ident="att.declarable" type="atts" mode="delete"/>
+        <classSpec ident="att.declaring" type="atts" mode="delete"/>
+        <classSpec ident="att.fragmentable" type="atts" mode="delete"/>
+        <classSpec ident="att.global.rendition" type="atts" mode="delete"/>
+        <classSpec ident="att.global.source" type="atts" mode="delete"/>
+        <classSpec ident="att.written" type="atts" mode="delete"/>
+        
+        <elementSpec ident="place" module="namesdates" mode="change">
+          <!-- allow <idno> in <place> as first node -->
+          <content>
+            <sequence>
+              <classRef key="model.headLike"
+                minOccurs="0" maxOccurs="unbounded"/>
+              <alternate>
+                <classRef key="model.pLike"
+                  minOccurs="0" maxOccurs="unbounded"/>
+                <alternate minOccurs="0"
+                  maxOccurs="unbounded">
+                  <classRef key="model.labelLike"/>
+                  <classRef key="model.placeStateLike"/>
+                  <classRef key="model.eventLike"/>
+                  <elementRef key="name"/>
+                  <elementRef key="idno"/>
+                </alternate>
+              </alternate>
+              <alternate minOccurs="0"
+                maxOccurs="unbounded">
+                <classRef key="model.noteLike"/>
+                <classRef key="model.biblLike"/>
+                <elementRef key="idno"/>
+                <elementRef key="ptr"/>
+                <elementRef key="linkGrp"/>
+                <elementRef key="link"/>
+              </alternate>
+              <alternate minOccurs="0"
+                maxOccurs="unbounded">
+                <classRef key="model.placeLike"/>
+                <elementRef key="listPlace"/>
+              </alternate>
+            </sequence>
+          </content>
+        </elementSpec>
+        
+      </schemaSpec>
+    </body>
+  </text>
+</TEI>
